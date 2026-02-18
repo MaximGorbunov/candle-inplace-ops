@@ -1,0 +1,22 @@
+If:
+  PathMatch: .*\.metal?
+
+CompileFlags:
+  Add:
+    - '--std'
+    - 'c++17'
+    - '-x'
+    - 'c++'
+    - '-I'
+    - '/System/Library/Frameworks'
+    - '-I'
+    - '/Library/Frameworks'
+    - '-I'
+    - '/usr/local/include'
+    - '-I'
+    - '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/metal/32023/lib/clang/32023.335/include'
+    - '-I'
+    - '/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/32023/Libraries/lib/clang/32023.401/include/metal'
+    - '-include'
+    - '/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/32023/Libraries/lib/clang/32023.850/include/metal/metal_types'
+    - -ferror-limit=0     # don't stop after first error
