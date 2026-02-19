@@ -1,3 +1,8 @@
+use candle_core::{CpuStorage, WithDType};
+use float8::F8E4M3 as f8e4m3;
+use half::{bf16, f16};
+use thiserror::Error;
+
 #[derive(Error, Debug)]
 pub enum DTypeError {
     #[error("unexpected type")]
@@ -20,11 +25,6 @@ macro_rules! mut_with_dtype {
         }
     };
 }
-
-use float8::F8E4M3 as f8e4m3;
-use half::{bf16, f16};
-
-use crate::metal_kernel_manager::{BINARY, MetalKernelManager};
 
 mut_with_dtype!(u8, U8);
 mut_with_dtype!(u32, U32);
