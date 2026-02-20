@@ -1,8 +1,8 @@
-pub(crate) mod dtype;
+pub mod dtype;
 
-type LibraryName = &'static str;
-type KernelName = &'static str;
-type Code = &'static str;
+pub type LibraryName = &'static str;
+pub type KernelName = &'static str;
+pub type Code = &'static str;
 
 #[cfg(feature = "metal")]
 pub mod metal_kernel_manager;

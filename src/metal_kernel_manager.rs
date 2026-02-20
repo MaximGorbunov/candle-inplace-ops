@@ -13,7 +13,6 @@ use thiserror::Error;
 use crate::{Code, KernelName, LibraryName};
 type PipelineKey = (LibraryName, KernelName, Option<ConstantValues>);
 
-
 pub struct MetalKernelManager<'a> {
     libraries: RwLock<HashMap<LibraryName, Library>>,
     pipelines: RwLock<HashMap<PipelineKey, ComputePipeline>>,
@@ -39,7 +38,7 @@ impl<T> From<PoisonError<T>> for MetalKernelLoadingError {
 }
 
 impl<'a> MetalKernelManager<'a> {
-    fn new(device: &'a MetalDevice) -> Self {
+    pub fn new(device: &'a MetalDevice) -> Self {
         MetalKernelManager {
             libraries: RwLock::new(HashMap::new()),
             pipelines: RwLock::new(HashMap::new()),

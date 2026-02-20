@@ -45,8 +45,10 @@ impl<T: MutWithDType + DeviceRepr> InplaceOp1 for InplaceBroadcastAdd<T> {
         let buf = &mut buf[layout.start_offset()..];
         for i in 0..shape.elem_count() {
             let mut idx = 0;
-            strides.iter().enumerate().for_each(|(stride_index, x)| {
+            let mut local_index = i;
+            strides.iter().enumerate().rev().for_each(|(stride_index, x)| {
                 idx = idx + (i % dims[stride_index]) * x;
+                local_index /= dims[stride_index];
             });
             buf[idx] = buf[idx] + self.value;
         }

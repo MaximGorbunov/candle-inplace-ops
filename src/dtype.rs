@@ -10,7 +10,7 @@ pub enum DTypeError {
 }
 
 pub trait MutWithDType: WithDType {
-     fn to_mut_slice(storage: &mut CpuStorage) -> Result<&mut [Self], DTypeError>;
+    fn to_mut_slice(storage: &mut CpuStorage) -> Result<&mut [Self], DTypeError>;
 }
 
 macro_rules! mut_with_dtype {
